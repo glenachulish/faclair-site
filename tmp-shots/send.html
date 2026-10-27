@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><title>send</title><body>sending…<script>
+(async()=>{
+ const names=new URLSearchParams(location.search).get('f').split(',');
+ const out=[];
+ for(const n of names){const b=await (await fetch(n)).arrayBuffer(); out.push({name:n,buf:b});}
+ (window.opener||window.parent).postMessage({faclairShots:out},'https://appstoreconnect.apple.com');
+})();
+</script>
